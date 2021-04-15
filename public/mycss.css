@@ -1,0 +1,58 @@
+html,body{
+    height: 100%;
+    font-size: 1.1rem;
+}
+body{
+    padding-top: 44px;
+}
+.hero-desktop{
+    background-image: url(carousel-1/1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 80vh;
+    background-position: center center;
+}
+.page-header{
+    margin-top: 3.9rem;
+    font-size: 1.25rem;
+    
+
+}
+.principal{
+    color: #fff;
+}
+.principal ul{
+    padding-left: 2rem;
+    list-style-type: none;
+}
+.principal ul li{
+    padding-left: 2rem;
+    background-image: url(img/check_white.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+.plataformas{
+    background-color: #fff;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  filter: invert(1);
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  filter: invert(1);
+}
