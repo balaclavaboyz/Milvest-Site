@@ -7,7 +7,7 @@ const session = require("express-session");
 const emailSchema = require("./models/email");
 
 const app = express();
-const PORT = process.env.PORT || 3535;
+const PORT = process.env.PORT || 5000;
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
