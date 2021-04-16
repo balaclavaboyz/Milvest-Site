@@ -62,6 +62,8 @@ app.get("/vesti", (req, res) => {
 app.get("/vestiapp", (req, res) => {
   res.redirect("https://milvest.vesti.mobi/app");
 });
+/*
+
 app.post("/email", (req, res) => {
   let avisos = [];
   let error = [];
@@ -81,6 +83,8 @@ app.post("/email", (req, res) => {
   error = [];
   res.redirect("/");
 });
+
+*/
 
 //server conf
 app.listen(PORT, function () {
