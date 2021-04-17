@@ -39,6 +39,14 @@ app.use((req, res, next) => {
 
 //routes
 app.use(require("./routes/index"));
+app.use((req, res) => {
+  res.status(400);
+  res.render("404");
+});
+app.use((req, res) => {
+  res.status(500);
+  res.render("500");
+});
 
 //nav
 app.get("/", (req, res) => {
@@ -87,14 +95,14 @@ app.post("/email", (req, res) => {
 */
 
 //sitemap xml
-app.get('/sitemap.xml',(req,res)=>{
-  res.sendFile('/sitemap.xml')
-})
+app.get("/sitemap.xml", (req, res) => {
+  res.sendFile("/sitemap.xml");
+});
 
 //robots.txt
-app.get('/robots.txt',(req,res)=>{
-  res.sendFile('robots.txt')
-})
+app.get("/robots.txt", (req, res) => {
+  res.sendFile("robots.txt");
+});
 
 //server conf
 app.listen(PORT, function () {
