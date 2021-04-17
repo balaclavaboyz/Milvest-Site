@@ -86,6 +86,11 @@ app.post("/email", (req, res) => {
 
 */
 
+//sitemap xml
+app.get('/sitemap.xml',(req,res)=>{
+  res.sendFile('/sitemap.xml')
+})
+
 //server conf
 app.listen(PORT, function () {
   console.log(`App is up on port ${PORT}`);
