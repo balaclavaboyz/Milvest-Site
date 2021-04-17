@@ -91,6 +91,11 @@ app.get('/sitemap.xml',(req,res)=>{
   res.sendFile('/sitemap.xml')
 })
 
+//robots.txt
+app.get('/robots.txt',(req,res)=>{
+  res.sendFile('robots.txt')
+})
+
 //server conf
 app.listen(PORT, function () {
   console.log(`App is up on port ${PORT}`);
