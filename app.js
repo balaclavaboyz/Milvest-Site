@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const flash = require("connect-flash");
-const session = require("express-session");
+// const flash = require("connect-flash");
+// const session = require("express-session");
 
 //import from emailSchema
 const emailSchema = require("./models/email");
@@ -23,25 +23,25 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 //connect-flash conf
-app.use(
-  session({
-    secret: "secret",
-    saveUninitialized: true,
-    resave: true,
-  })
-);
-app.use(flash());
-app.use((req, res, next) => {
-  res.locals.aviso = req.flash("aviso");
-  res.locals.error = req.flash("error");
-  next();
-});
+// app.use(
+//   session({
+//     secret: "secret",
+//     saveUninitialized: true,
+//     resave: true,
+//   })
+// );
+// app.use(flash());
+// app.use((req, res, next) => {
+//   res.locals.aviso = req.flash("aviso");
+//   res.locals.error = req.flash("error");
+//   next();
+// });
 
 //nav
 app.get("/", (req, res) => {
   res.render("index", {
-    aviso: req.flash("aviso"),
-    error: req.flash("error"),
+    //aviso: req.flash("aviso"),
+    //error: req.flash("error"),
   });
 });
 
