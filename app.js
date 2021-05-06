@@ -61,8 +61,8 @@ app.get("/vesti", (req, res) => {
 app.get("/vestiapp", (req, res) => {
   res.redirect("https://milvest.vesti.mobi/app");
 });
-app.get("/politica_de_privacidade", (req, res) => {
-  res.render("politica_de_privacidade");
+app.get("/politica", (req, res) => {
+  res.render("politica");
 });
 /*
 
