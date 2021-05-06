@@ -56,9 +56,11 @@ app.get("/localizacao", (req, res) => {
 app.get("/vesti", (req, res) => {
   res.redirect("https://milvest.vesti.mobi");
 });
+
 app.get("/vestiapp", (req, res) => {
   res.redirect("https://milvest.vesti.mobi/app");
 });
+
 app.get("/politica", (req, res) => {
   res.render("politica");
 });
