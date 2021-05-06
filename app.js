@@ -89,9 +89,9 @@ app.post("/email", (req, res) => {
 */
 
 //sitemap xml
-// app.get("/sitemap.xml", (req, res) => {
-//   res.sendFile("/sitemap.xml");
-// });
+app.get("/sitemap.xml", (req, res) => {
+  res.sendFile("/sitemap.xml");
+});
 
 //robots.txt
 app.get("/robots.txt", (req, res) => {
