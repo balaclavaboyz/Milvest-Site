@@ -1,0 +1,33 @@
+<!--
+<section class="email pt-5">
+  <div class="container">
+    <div class="row">
+      <h3 class="display-4">Contate Conosco</h3>
+    </div>
+    <div class="row pt-5">
+      <div class="col-md">
+        <% aviso.forEach((err=>{ %>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%= err.aviso %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% })) %>
+      </div>
+      <div class="col-md-12">
+        <form action="/email" method="post">
+          <div class="form-group">
+            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" 
+            value="<%= error.map((a)=>a.email) %>">
+          </div>
+          <div class="form-floating">
+            <textarea name="msg" class="form-control mt-3" placeholder="Mensagem" id="msg" style="height: 150px;" value=""><%= error.map((a)=>a.msg) %></textarea>
+            <label class="text-muted" for="msg">Mensagem</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>  
+-->
