@@ -22,6 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+//routes
+app.use(require("./routes/index"));
+
 //connect-flash conf
 // app.use(
 //   session({
@@ -89,17 +92,16 @@ app.post("/email", (req, res) => {
 */
 
 //sitemap xml
-// app.get("/sitemap.xml", (req, res) => {
-//   res.sendFile("/sitemap.xml");
-// });
+app.get("/sitemap.xml", (req, res) => {
+  res.sendFile("/sitemap.xml");
+});
 
 //robots.txt
 app.get("/robots.txt", (req, res) => {
   res.sendFile("robots.txt");
 });
 
-//routes
-app.use(require("./routes/index"));
+
 app.use((req, res) => {
   res.status(400);
   res.render("404");
