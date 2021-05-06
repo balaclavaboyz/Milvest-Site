@@ -48,6 +48,10 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/politica", (req, res) => {
+  res.render("politica");
+});
+
 app.get("/faq", (req, res) => {
   res.render("faq");
 });
@@ -64,9 +68,7 @@ app.get("/vestiapp", (req, res) => {
   res.redirect("https://milvest.vesti.mobi/app");
 });
 
-app.get("/politica", (req, res) => {
-  res.render("politica");
-});
+
 /*
 
 app.post("/email", (req, res) => {
