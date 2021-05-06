@@ -37,16 +37,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//routes
-app.use(require("./routes/index"));
-app.use((req, res) => {
-  res.status(400);
-  res.render("404");
-});
-app.use((req, res) => {
-  res.status(500);
-  res.render("500");
-});
+
 
 //nav
 app.get("/", (req, res) => {
@@ -69,6 +60,9 @@ app.get("/vesti", (req, res) => {
 });
 app.get("/vestiapp", (req, res) => {
   res.redirect("https://milvest.vesti.mobi/app");
+});
+app.get("/politica_de_privacidade", (req, res) => {
+  res.render("politica_de_privacidade");
 });
 /*
 
@@ -104,7 +98,19 @@ app.get("/robots.txt", (req, res) => {
   res.sendFile("robots.txt");
 });
 
+//routes
+app.use(require("./routes/index"));
+app.use((req, res) => {
+  res.status(400);
+  res.render("404");
+});
+app.use((req, res) => {
+  res.status(500);
+  res.render("500");
+});
+
 //server conf
 app.listen(PORT, function () {
   console.log(`App is up on port ${PORT}`);
 });
+
