@@ -22,10 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-//routes
-app.use(require("./routes/index"));
-
-
 //connect-flash conf
 // app.use(
 //   session({
@@ -43,7 +39,7 @@ app.use(require("./routes/index"));
 
 //nav
 app.get("/", (req, res) => {
-  res.render("index", {
+  res.render("index.ejs", {
     //aviso: req.flash("aviso"),
     //error: req.flash("error"),
   });
@@ -68,7 +64,6 @@ app.get("/vesti", (req, res) => {
 app.get("/vestiapp", (req, res) => {
   res.redirect("https://milvest.vesti.mobi/app");
 });
-
 
 /*
 
@@ -104,26 +99,12 @@ app.get("/robots.txt", (req, res) => {
   res.sendFile("robots.txt");
 });
 
-
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-      res.status(err.status || 500);
-      res.render('400');
-  });
-}
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('500');
+//ganbi para errors 404 500
+app.get("*", (req, res) => {
+  res.render("404");
 });
 
 //server conf
 app.listen(PORT, function () {
   console.log(`App is up on port ${PORT}`);
 });
-
