@@ -25,6 +25,7 @@ app.set("view engine", "ejs");
 //routes
 app.use(require("./routes/index"));
 
+
 //connect-flash conf
 // app.use(
 //   session({
@@ -104,13 +105,21 @@ app.get("/robots.txt", (req, res) => {
 });
 
 
-app.use((req, res) => {
-  res.status(400);
-  res.render("404");
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
-app.use((req, res) => {
-  res.status(500);
-  res.render("500");
+
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+      res.status(err.status || 500);
+      res.render('400');
+  });
+}
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('500');
 });
 
 //server conf
