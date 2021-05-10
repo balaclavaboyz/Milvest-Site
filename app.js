@@ -1,5 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
+
+const fs = require("fs");
+
 // const flash = require("connect-flash");
 // const session = require("express-session");
 
@@ -36,10 +39,38 @@ app.set("view engine", "ejs");
 //   res.locals.error = req.flash("error");
 //   next();
 // });
+const dirPrimeiroPainel = "./public/carousel-1";
+//array de fotos da galeria
+let fotoPrimeiroPainel;
+fs.readdir(dirPrimeiroPainel, (err, files) => {
+  if (err) {
+    console.log(err);
+  } else {
+    //files passa um array com os nomes das fotos
+    fotoPrimeiroPainel = files;
+    //console.log(arrayfotos)
+  }
+});
+const dirSegundoPainel = "./public/carousel-2";
+//array de fotos da galeria
+let fotoSegundoPainel;
+fs.readdir(dirSegundoPainel, (err, files) => {
+  if (err) {
+    console.log(err);
+  } else {
+    //files passa um array com os nomes das fotos
+    fotoSegundoPainel = files;
+    //console.log(arrayfotos)
+  }
+});
 
 //nav
 app.get("/", (req, res) => {
   res.render("index.ejs", {
+    fotoPrimeiroPainel: fotoPrimeiroPainel,
+    dir1: "carousel-1",
+    fotoSegundoPainel: fotoSegundoPainel,
+    dir2: "carousel-2",
     //aviso: req.flash("aviso"),
     //error: req.flash("error"),
   });
