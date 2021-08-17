@@ -140,17 +140,17 @@ app.get("*", (req, res) => {
 });
 
 //server conf
-app.listen(PORT, function () {
-  console.log(`App is up on port ${PORT}`);
-});
+// app.listen(PORT, function () {
+//   console.log(`App is up on port ${PORT}`);
+// });
 
-http.createServer(function(req, res) {   
-  res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
-  res.end();
-}).listen(80);
+// http.createServer(function(req, res) {   
+//   res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
+//   res.end();
+// }).listen(80);
 
 https.createServer({ 
   key: fs.readFileSync("/etc/letsencrypt/archive/milvest.com.br/privkey1.pem"),
   cert: fs.readFileSync("/etc/letsencrypt/archive/milvest.com.br/fullchain1.pem"),
   ca: fs.readFileSync("/etc/letsencrypt/archive/milvest.com.br/chain1.pem")
-}, app).listen(443);
+}, app).listen(PORT);
