@@ -1,7 +1,8 @@
 const express = require("express");
 //const mongoose = require("mongoose");
-
-const fs = require("fs");
+const https = require('http2')
+const http =require('http')
+const fs = require('fs');
 
 // const flash = require("connect-flash");
 // const session = require("express-session");
@@ -12,7 +13,8 @@ const emailSchema = require("./models/email");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+//email WIP TODO
+//const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 //con mongodb
 /*
@@ -141,3 +143,14 @@ app.get("*", (req, res) => {
 app.listen(PORT, function () {
   console.log(`App is up on port ${PORT}`);
 });
+
+http.createServer(function(req, res) {   
+  res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
+  res.end();
+}).listen(80);
+
+https.createServer({ 
+  key: fs.readFileSync("/etc/letsencrypt/archive/milvest.com.br/privkey1.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/archive/milvest.com.br/fullchain1.pem"),
+  ca: fs.readFileSync("/etc/letsencrypt/archive/milvest.com.br/chain1.pem")
+}, app).listen(443);
