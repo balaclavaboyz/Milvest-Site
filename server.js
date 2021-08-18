@@ -1,10 +1,7 @@
 const express = require("express");
 const fs = require("fs");
-const spdy = require('spdy')
-const path=require('path')
-const http2=require('http2')
 const app = express();
-const PORT=3535
+const PORT = 3535
 
 // const flash = require("connect-flash");
 // const session = require("express-session");
