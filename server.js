@@ -146,7 +146,7 @@ app.get("*", (req, res) => {
 // });
 
 spdy
-  .createServer(options, app)
+  .createServer(credentials, app)
   .listen(PORT, (error) => {
     if (error) {
       console.error(error)
