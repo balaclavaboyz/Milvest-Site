@@ -137,9 +137,9 @@ app.get("/robots.txt", (req, res) => {
 });
 
 //ganbi para errors 404 500
-// app.get("*", (req, res) => {
-//   res.render("404");
-// });
+app.get("*", (req, res) => {
+  res.render("404");
+});
 
 //server conf
 // app.listen(PORT, function () {
