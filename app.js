@@ -1,18 +1,22 @@
 const express = require("express");
-//const mongoose = require("mongoose");
-
 const fs = require("fs");
+const spdy = require('spdy')
+const path=require('path')
+const http=require('http')
+const https=require('https')
+const privateKey=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/privkey.pem','utf-8')
+const certificate=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/fullchain.pem','utf-8')
+let credentials = {key: privateKey, cert: certificate};
+const app = express();
+const PORT = process.env.PORT || 5000;
 
 // const flash = require("connect-flash");
 // const session = require("express-session");
 
 //import from emailSchema
-const emailSchema = require("./models/email");
+//const emailSchema = require("./models/email");
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+//const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 //con mongodb
 /*
@@ -138,6 +142,17 @@ app.get("*", (req, res) => {
 });
 
 //server conf
-app.listen(PORT, function () {
-  console.log(`App is up on port ${PORT}`);
-});
+// app.listen(PORT, function () {
+//   console.log(`App is up on port ${PORT}`);
+// });
+
+spdy
+  .createServer(credentials, app)
+  .listen(PORT, (error) => {
+    if (error) {
+      console.error(error)
+      return process.exit(1)
+    } else {
+      console.log(`rodando servidor na porta:${PORT}`)
+    }
+  })
