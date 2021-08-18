@@ -3,9 +3,9 @@ const fs = require("fs");
 const spdy = require('spdy')
 const path=require('path')
 const http2=require('http2')
-//const privateKey=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/privkey.pem','utf-8')
-//const certificate=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/fullchain.pem','utf-8')
-//let credentials = {key: privateKey, cert: certificate};
+const privateKey=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/privkey.pem','utf-8')
+const certificate=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/fullchain.pem','utf-8')
+let credentials = {key: privateKey, cert: certificate};
 const app = express();
 const PORT=3535
 
@@ -141,17 +141,17 @@ app.get("*", (req, res) => {
 });
 
 //server conf
-app.listen(PORT, function () {
-  console.log(`App is up on port ${PORT}`);
-});
+// app.listen(PORT, function () {
+//   console.log(`App is up on port ${PORT}`);
+// });
 
-// spdy
-//   .createServer(credentials, app)
-//   .listen(PORT, (error) => {
-//     if (error) {
-//       console.error(error)
-//       return process.exit(1)
-//     } else {
-//       console.log('Listening on port: ' + PORT + '.')
-//     }
-//   })
+spdy
+  .createServer(credentials, app)
+  .listen(PORT, (error) => {
+    if (error) {
+      console.error(error)
+      return process.exit(1)
+    } else {
+      console.log('Listening on port: ' + PORT + '.')
+    }
+  })
