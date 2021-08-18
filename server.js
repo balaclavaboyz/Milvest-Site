@@ -2,12 +2,10 @@ const express = require("express");
 const fs = require("fs");
 const spdy = require('spdy')
 const path=require('path')
-const http=require('http')
-const https=require('https')
+const http2=require('http2')
 const privateKey=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/privkey.pem','utf-8')
 const certificate=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/cert.pem','utf-8')
 let credentials = {key: privateKey, cert: certificate};
-console.log(credentials)
 const app = express();
 const PORT=3535
 
@@ -147,13 +145,8 @@ app.get("*", (req, res) => {
 //   console.log(`App is up on port ${PORT}`);
 // });
 
-spdy
-  .createServer(credentials, app)
-  .listen(PORT, (error) => {
-    if (error) {
-      console.error(error)
-      return process.exit(1)
-    } else {
-      console.log(`rodando servidor na porta:${PORT}`)
-    }
-  })
+const server=http2.createSecureServer({
+  credentials
+},app)
+
+server.listen(PORT)
