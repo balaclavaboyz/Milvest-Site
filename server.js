@@ -7,6 +7,7 @@ const https=require('https')
 const privateKey=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/privkey.pem','utf-8')
 const certificate=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/cert.pem','utf-8')
 let credentials = {key: privateKey, cert: certificate};
+console.log(credentials)
 const app = express();
 
 // const flash = require("connect-flash");
