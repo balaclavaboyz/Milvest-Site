@@ -9,6 +9,7 @@ const certificate=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/cert.pem
 let credentials = {key: privateKey, cert: certificate};
 console.log(credentials)
 const app = express();
+const PORT=3535
 
 // const flash = require("connect-flash");
 // const session = require("express-session");
@@ -148,11 +149,11 @@ app.get("*", (req, res) => {
 
 spdy
   .createServer(credentials, app)
-  .listen(5000, (error) => {
+  .listen(PORT, (error) => {
     if (error) {
       console.error(error)
       return process.exit(1)
     } else {
-      console.log(`rodando servidor na porta:5000`)
+      console.log(`rodando servidor na porta:${PORT}`)
     }
   })
