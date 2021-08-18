@@ -3,9 +3,6 @@ const fs = require("fs");
 const spdy = require('spdy')
 const path=require('path')
 const http2=require('http2')
-// const privateKey=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/privkey.pem','utf-8')
-// const certificate=fs.readFileSync('/etc/letsencrypt/live/milvest.com.br/fullchain.pem','utf-8')
-// let credentials = {key: privateKey, cert: certificate};
 const app = express();
 const PORT=3535
 
